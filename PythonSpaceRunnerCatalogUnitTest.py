@@ -41,7 +41,6 @@ class PythonSpaceRunnerCatalogUnitTest(unittest.TestCase):
         self.projectsLinkClassName         = selector_object.projectsLinkClassName
         self.projectTileXPath              = selector_object.projectTileXPath
         self.createButtonCSSSelector       = selector_object.createButtonCSSSelector
-        #self.XyiconClassCSSSelector        = selector_object.XyiconClassCSSSelector
         self.electricalSelectXpath         = selector_object.electricalSelectXpath
         self.iconSearchXPath               = selector_object.iconSearchXPath
         self.svgIconCSSSelector            = selector_object.svgIconCSSSelector
@@ -135,43 +134,11 @@ class PythonSpaceRunnerCatalogUnitTest(unittest.TestCase):
                 self.loginSubmitButton = self.myPyDriver.find_element_by_name(self.name_submitButton)
                 self.loginSubmitButton.click()
                 time.sleep(1)
-                #self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME,self.className_IconProject)))
-                #self.selectProjectModule = self.myPyDriver.find_element_by_class_name(self.className_IconProject)
-                #time.sleep(1)
-                #self.selectProjectModule.click()
-                #time.sleep(1)
                 self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME,self.className_IconCatalog)))
                 self.selectCatalogModule = self.myPyDriver.find_element_by_class_name(self.className_IconCatalog)
                 self.selectCatalogModule.click()
                 time.sleep(4)
                 self.wait.until(EC.presence_of_all_elements_located((By.XPATH,'//td')))
-                #self.myPyDriver.get(self.url)
-                #self.assertTrue( self.myPyDriver.title == "SpaceRunner" )
-                #self.wait.until(EC.presence_of_element_located((By.NAME,self.name_userName)))
-                #self.userNameField = self.myPyDriver.find_element_by_name(self.name_userName)
-                #self.userNameField.send_keys(self.adminUserName)
-                #self.userPassword = self.myPyDriver.find_element_by_name(self.name_pwInput)
-                #self.userPassword.send_keys(self.adminPassword)
-                #self.loginSubmitButton = self.myPyDriver.find_element_by_name(self.name_submitButton)
-                #self.loginSubmitButton.click()
-                #self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME,self.className_IconProject)))
-                #self.selectProjectModule = self.myPyDriver.find_element_by_class_name(self.projectsLinkClassName)
-                #self.selectProjectModule.click()
-                #self.wait.until(EC.presence_of_element_located((By.XPATH,self.projectTileXPath)))
-                #self.selectProject = self.myPyDriver.find_element_by_xpath(self.projectTileXPath)
-                #self.selectProject.click()
-                ##catalog button was being clicked too early sometimes, wait for project tile to appear first.
-                #self.wait.until(EC.presence_of_element_located((By.XPATH,self.spaceXPath)))
-                #self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,self.catalogLinkCSSSelector)))
-                #self.catalogLink = self.myPyDriver.find_element_by_css_selector(self.catalogLinkCSSSelector)
-                #self.catalogLink.click()
-                #time.sleep(1)
-                #self.assertTrue(EC.presence_of_element_located((By.XPATH,self.catalogHeaderXPath)))
-                #_closeWalkMe = self.myPyDriver.find_element_by_xpath(self.walkMeCloseButtonXPath)
-                #if _closeWalkMe:
-                #    _closeWalkMe.click()
-                #else:
-                #    pass
             except:
                 self.myPyDriver.quit()
                 self.fail()
@@ -267,7 +234,6 @@ class PythonSpaceRunnerCatalogUnitTest(unittest.TestCase):
         self.submitButton.click()
 
         #select the created catalog item and compare values to make sure it was created correctly
-        #_savedXyiconGridRow = self.myPyDriver.find_element_by_xpath(self.td_span_contains_start+_model+self.contains_end)
         _savedXyiconGridRow = self.myPyDriver.find_elements_by_xpath('//tr')
         #two \\tr's should be the one created catalog item and the title bar ("class//make//model" etc)
         self.assertTrue(len(_savedXyiconGridRow)==2)
